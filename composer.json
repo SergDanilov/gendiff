@@ -1,0 +1,16 @@
+{
+    "name": "hexlet/code",
+    "description": "A difference calculator is a program that determines the difference between two data structures. A similar mechanism is used when outputting tests or automatically tracking changes in configuration files.",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Hexlet\\Code\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sergey Danilov"
+        }
+    ],
+    "require": {}
+}
