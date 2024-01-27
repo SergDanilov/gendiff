@@ -4,15 +4,15 @@ namespace Hexlet\Code\Gendiff;
 
 function runDiffer()
 {
-echo "
-Generate diff
+    echo "
+        Generate diff
 
-Usage:
-  gendiff (-h|--help)
-  gendiff (-v|--version)
+        Usage:
+        gendiff (-h|--help)
+        gendiff (-v|--version)
 
-Options:
-  -h --help                     Show this screen
-  -v --version                  Show version";
-echo"\n";
+        Options:
+        -h --help                     Show this screen
+        -v --version                  Show version";
+    echo"\n";
 }
