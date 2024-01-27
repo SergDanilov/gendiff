@@ -13,6 +13,6 @@ Usage:
 
 Options:
   -h --help                     Show this screen
-  -v --version                  Show version"
+  -v --version                  Show version";
 echo"\n";
 }
