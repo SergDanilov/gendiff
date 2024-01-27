@@ -28,5 +28,5 @@ Options:
   -v --version                  Show version
  
 DOC;
-
-runDiffer($doc);
+$result = Docopt::handle($doc);
+runDiffer($result);
