@@ -2,17 +2,8 @@
 
 namespace Hexlet\Code\Gendiff;
 
-function runDiffer()
-{
-    echo "
-        Generate diff
-
-        Usage:
-        gendiff (-h|--help)
-        gendiff (-v|--version)
-
-        Options:
-        -h --help                     Show this screen
-        -v --version                  Show version";
-    echo"\n";
+function runDiffer($doc)
+{   
+    $result = Docopt::handle($doc);
+    print_r($result);
 }
