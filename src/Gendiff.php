@@ -2,7 +2,7 @@
 
 namespace Hexlet\Code\Gendiff;
 
-public function runDiffer()
+function runDiffer()
 {
 echo "
 Generate diff
