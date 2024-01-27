@@ -2,7 +2,7 @@
 
 namespace Hexlet\Code\Gendiff;
 
-require('/../src/docopt.php');
+require('/../vendor/docopt/docopt/src/docopt.php');
 
 function runDiffer($doc)
 {   
