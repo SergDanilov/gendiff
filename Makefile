@@ -2,7 +2,7 @@
 install:
 	composer install
 gendiff:
-	./bin/gendiff
+	./bin/gendiff -h
 validate:
 	composer validate
 lint:
