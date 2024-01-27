@@ -29,6 +29,4 @@ Options:
  
 DOC;
 
-$param = ['version' => 'Generate diff 1.0'];
-$result = Docopt::handle($doc, $param);
-print_r($result);
+runDiffer($doc);
