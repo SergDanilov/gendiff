@@ -33,4 +33,4 @@ DOC;
 $result = Docopt::handle($doc);
 $filePath1 = __DIR__ . '/tests/file1.json';
 $filePath2 = __DIR__ . '/tests/file2.json';
-runDiffer($filePath1, $filePath2, $result);
+// runDiffer($filePath1, $filePath2, $result);
