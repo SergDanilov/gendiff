@@ -7,28 +7,28 @@ $filePath2 = __DIR__ . '/../tests/file2.json';
 
 function comparison (array $fileOne, array $fileTwo)
 {
-    $result = "";
+    $result = "{\n";
     $resultEquals = array_intersect($fileOne, $fileTwo);
-    foreach ($resultEquals as $key => $value) {
-        $result = $result . "  {$key}: {$value}";
+    $arrNew = [];
+    foreach ($resultEquals as $key => $item) {
+        $arrNew["{$key}: {$item}"] = "   ";
     }
     $result1 = array_diff($fileOne, $fileTwo);
-    foreach ($result1 as $key => $value) {
-        $result = $result . "- {$key}: {$value}";
+    foreach ($result1 as $key => $item) {
+        $arrNew["{$key}: {$item}"] = " - ";
     }
     $result2 = array_diff($fileTwo, $fileOne);
-    foreach ($result2 as $key => $value) {
-        $result = $result . "+ {$key}: {$value}";
+    foreach ($result2 as $key => $item) {
+        $arrNew["{$key}: {$item}"] = " + ";
     }
-    $result = $result . "";
-    
-    // print_r($resultEquals);
-    // print_r($result1);
-    // print_r($result2);
-    // print_r($result);
-    $arrString = explode(",", $result);
-    natsort($arrString);
-    print_r($arrString);
+    ksort($arrNew);
+    foreach ($arrNew as $key => $value) {
+        $result = $result . " {$value} {$key}\n";
+    }
+
+    $result = $result . "}\n";
+    // print_r($arrNew);
+    print_r($result);
     return $result;
 }
 
