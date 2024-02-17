@@ -35,14 +35,14 @@ function genDiff($filePath1, $filePath2)
         $arr1 = json_decode($file1GetContent, true);
         
     } else {
-        echo "Error";
+        throw new \Exception("Unable to open file: '{$filePath1}'!");
     }
     if (file_exists($filePath2)) {
         $file2GetContent =  file_get_contents($filePath2);
         $arr2 = json_decode($file2GetContent, true);
 
     } else {
-        echo "Error";
+        throw new \Exception("Unable to open file: '{$filePath2}'!");
     }
     comparison ($arr1, $arr2);
 }
