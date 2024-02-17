@@ -1,8 +1,10 @@
 # Makefile
 install:
 	composer install
+manual:
+	./bin/manual -h
 gendiff:
-	./bin/gendiff -h
+	./bin/gendiff
 validate:
 	composer validate
 lint:
