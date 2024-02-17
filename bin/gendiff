@@ -3,34 +3,20 @@
 <?php 
 
 /*
-Runer to gendiff
+Runner to Differ
 */
 
-use function Hexlet\Code\Gendiff\runDiffer;
+use function Hexlet\Code\Differ\genDiff;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+$filePath1 = __DIR__ . '/../tests/file1.json';
+$filePath2 = __DIR__ . '/../tests/file2.json';
+
 if (file_exists($autoloadPath1)) {
     require_once $autoloadPath1;
 } else {
     require_once $autoloadPath2;
 }
 
-$doc = <<<DOC
-Generate diff
-
-Usage:
-  gendiff (-h|--help)
-  gendiff (-v|--version)
-  gendiff [--format <fmt>] <firstFile> <secondFile>
-
-Options:
-  -h --help                     Show this screen
-  -v --version                  Show version
-  --format <fmt>                Report format [default: stylish]
- 
-DOC;
-$result = Docopt::handle($doc);
-$filePath1 = __DIR__ . '/tests/file1.json';
-$filePath2 = __DIR__ . '/tests/file2.json';
-// runDiffer($filePath1, $filePath2, $result);
+genDiff($filePath1, $filePath2);
