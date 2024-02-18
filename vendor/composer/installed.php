@@ -1,42 +1,50 @@
-<?php return array (
-  'root' => 
-  array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
-    'aliases' => 
-    array (
+<?php return array(
+    'root' => array(
+        'name' => 'hexlet/code',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '0f3084d2f5508b883583767db5b9bd2a09f85cb9',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
     ),
-    'reference' => '71e884e788c1cc5a2481bb4bd22230194f50833f',
-    'name' => 'hexlet/code',
-  ),
-  'versions' => 
-  array (
-    'docopt/docopt' => 
-    array (
-      'pretty_version' => '1.0.5',
-      'version' => '1.0.5.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '0e3db660cf2f2eb07a83253790b7d97cdb398826',
+    'versions' => array(
+        'docopt/docopt' => array(
+            'pretty_version' => '1.0.5',
+            'version' => '1.0.5.0',
+            'reference' => '0e3db660cf2f2eb07a83253790b7d97cdb398826',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../docopt/docopt',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'hexlet/code' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '0f3084d2f5508b883583767db5b9bd2a09f85cb9',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'squizlabs/php_codesniffer' => array(
+            'pretty_version' => '3.8.1',
+            'version' => '3.8.1.0',
+            'reference' => '14f5fff1e64118595db5408e946f3a22c75807f7',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'wp-cli/php-cli-tools' => array(
+            'pretty_version' => 'v0.11.22',
+            'version' => '0.11.22.0',
+            'reference' => 'a6bb94664ca36d0962f9c2ff25591c315a550c51',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../wp-cli/php-cli-tools',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
     ),
-    'hexlet/code' => 
-    array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '71e884e788c1cc5a2481bb4bd22230194f50833f',
-    ),
-    'squizlabs/php_codesniffer' => 
-    array (
-      'pretty_version' => '3.8.1',
-      'version' => '3.8.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '14f5fff1e64118595db5408e946f3a22c75807f7',
-    ),
-  ),
 );

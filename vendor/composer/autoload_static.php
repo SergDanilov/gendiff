@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
 {
     public static $files = array (
+        'be01b9b16925dcb22165c40b46681ac6' => __DIR__ . '/..' . '/wp-cli/php-cli-tools/lib/cli/cli.php',
         '7a4aeb08a83e98b8597ede2cef7feeff' => __DIR__ . '/../..' . '/src/Differ.php',
     );
 
@@ -21,6 +22,16 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'Hexlet\\Code\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'c' => 
+        array (
+            'cli' => 
+            array (
+                0 => __DIR__ . '/..' . '/wp-cli/php-cli-tools/lib',
+            ),
         ),
     );
 
@@ -51,6 +62,7 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit3889d8725f6edf05af1f291c59f3102e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit3889d8725f6edf05af1f291c59f3102e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit3889d8725f6edf05af1f291c59f3102e::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit3889d8725f6edf05af1f291c59f3102e::$classMap;
 
         }, null, ClassLoader::class);
