@@ -16,8 +16,8 @@ class DifferTest extends TestCase
     {
         // Сначала идет ожидаемое значение (expected)
         // И только потом актуальное (actual)
-        $array1 =  ["host": "hexlet.io", "timeout": 50, "proxy": "123.234.53.22", "follow": false];
-        $array2 =  [];
+        $array1 =  ['host' => 'hexlet.io', 'timeout' => 50, 'proxy' => '123.234.53.22', 'follow' => false];
+        $array2 =  ['timeout' => 20, 'verbose' => true, 'host' => hexlet.io];
         $this->assertEquals('{
             -  follow: false
                host: hexlet.io
@@ -25,6 +25,6 @@ class DifferTest extends TestCase
             +  timeout: 20
             -  timeout: 50
             +  verbose: true
-          }', comparison($filePath1, $filePath1));
+          }', comparison($array1, $array2));
     }
 }
