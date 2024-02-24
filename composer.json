@@ -13,6 +13,11 @@
             "src/Differ.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+          "Hexlet\\Code\\Tests\\": "tests"
+        }
+    },
     "authors": [
         {
             "name": "Sergey Danilov"
