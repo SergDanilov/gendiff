@@ -16,6 +16,8 @@ class DifferTest extends TestCase
     {
         // Сначала идет ожидаемое значение (expected)
         // И только потом актуальное (actual)
+        $filePath1 = __DIR__ . '/../tests/fixtures/file1.json';
+        $filePath2 = __DIR__ . '/../tests/fixtures/file2.json';
         $this->assertEquals('{
             -  follow: false
                host: hexlet.io
@@ -23,6 +25,6 @@ class DifferTest extends TestCase
             +  timeout: 20
             -  timeout: 50
             +  verbose: true
-          }', comparison(/fixtures/file1.json, /fixtures/file2.json));
+          }', comparison($filePath1, $filePath1));
     }
 }
