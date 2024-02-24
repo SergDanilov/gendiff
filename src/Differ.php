@@ -52,5 +52,7 @@ function genDiff($filePath1, $filePath2)
     } else {
         throw new \Exception("Unable to open file: '{$filePath2}'!");
     }
+    print_r($arr1);
+    print_r($arr2);
     comparison($arr1, $arr2);
 }
