@@ -18,6 +18,14 @@ class DifferTest extends TestCase
         // И только потом актуальное (actual)
         $array1 =  ['host' => 'hexlet.io', 'timeout' => '50', 'proxy' => '123.234.53.22', 'follow' => 'false'];
         $array2 =  ['timeout' => 20, 'verbose' => 'true', 'host' => 'hexlet.io'];
-        $this->assertEquals('{\n - follow: false\n   host: hexlet.io\n - proxy: 123.234.53.22\n + timeout: 20\n - timeout: 50\n + verbose: true\n}\n', comparison($array1, $array2));
+        $this->assertEquals('{
+ - follow: false
+   host: hexlet.io
+ - proxy: 123.234.53.22
+ + timeout: 20
+ - timeout: 50
+ + verbose: true
+}
+', comparison($array1, $array2));
     }
 }
