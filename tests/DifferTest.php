@@ -25,6 +25,7 @@ class DifferTest extends TestCase
             +  timeout: 20
             -  timeout: 50
             +  verbose: true
-          }', comparison($array1, $array2));
+          }
+          ', comparison($array1, $array2));
     }
 }
