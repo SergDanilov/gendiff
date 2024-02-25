@@ -3,7 +3,7 @@
 namespace Hexlet\Code\Tests;
 
 use PHPUnit\Framework\TestCase;
-use function Hexlet\Code\Differ\comparison;
+use function Hexlet\Code\Differ\genDiff;
 
 // класс DifferTest наследует класс TestCase
 // имя класса совпадает с именем файла
@@ -12,7 +12,7 @@ class DifferTest extends TestCase
     // Метод, функция определенная внутри класса
     // Должна начинаться со слова test
     // public – чтобы PHPUnit мог вызвать этот тест снаружи
-    public function testComparison(): void
+    public function testGenDiff(): void
     {
         // Сначала идет ожидаемое значение (expected)
         // И только потом актуальное (actual)
@@ -27,6 +27,6 @@ class DifferTest extends TestCase
   -  timeout: 50
   +  verbose: true
 }
-', comparison($array1, $array2));
+', genDiff($array1, $array2));
     }
 }
