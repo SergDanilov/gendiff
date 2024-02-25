@@ -18,9 +18,6 @@ line("ok it is:, %s!", $filePath1);
 $filePath2 = prompt('Please enter path to file#2');
 line("good!");
 
-// $filePath1 = __DIR__ . '/../tests/file1.json';
-// $filePath2 = __DIR__ . '/../tests/file2.json';
-
 $filePath1 = __DIR__ . $filePath1;
 $filePath2 = __DIR__ . $filePath2;
 genDiff($filePath1, $filePath2);
