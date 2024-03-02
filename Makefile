@@ -2,7 +2,7 @@
 install:
 	composer install
 manual:
-	./bin/manual -h
+	./bin/manual
 gendiff:
 	./bin/gendiff
 validate:
