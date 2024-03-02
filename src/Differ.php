@@ -2,7 +2,7 @@
 
 namespace Hexlet\Code\Differ;
 
-function genDiff($filePath1, $filePath2)
+function genDiff($filePath1, $filePath2, $format)
 {
     if (file_exists($filePath1)) {
         $file1GetContent =  file_get_contents($filePath1);
@@ -48,6 +48,6 @@ function genDiff($filePath1, $filePath2)
     }
 
     $result = $result . "}\n";
-    print_r($result);
+    // print_r($result);
     return $result;
 }
