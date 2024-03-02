@@ -2,7 +2,7 @@
 install:
 	composer install
 gendiff:
-	./bin/gendiff
+	./bin/gendiff file1.json file2.json
 validate:
 	composer validate
 lint:

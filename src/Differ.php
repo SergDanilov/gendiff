@@ -1,10 +1,10 @@
 <?php
 
 namespace Hexlet\Code\Differ;
-function getCorrectPath($path) 
+
+function getCorrectPath($path)
 {
-    $parts = [__DIR__, 'fixtures', $path];
-    var_dump(implode('/', $parts));
+    $parts = [__DIR__, '../tests/fixtures', $path];
     return realpath(implode('/', $parts));
 }
 function genDiff($filePath1, $filePath2)
@@ -14,7 +14,7 @@ function genDiff($filePath1, $filePath2)
     if (file_exists($file1)) {
         $file1GetContent =  file_get_contents($file1);
         $fileOne = json_decode($file1GetContent, true);
-        foreach($fileOne as $key => $value) {
+        foreach ($fileOne as $key => $value) {
             if (is_bool($value) === true) {
                 $fileOne[$key] = ($value === true) ? 'true' : 'false';
             }
@@ -25,7 +25,7 @@ function genDiff($filePath1, $filePath2)
     if (file_exists($file2)) {
         $file2GetContent =  file_get_contents($file2);
         $fileTwo = json_decode($file2GetContent, true);
-        foreach($fileTwo as $key => $value) {
+        foreach ($fileTwo as $key => $value) {
             if (is_bool($value) === true) {
                 $fileTwo[$key] = ($value === true) ? 'true' : 'false';
             }
