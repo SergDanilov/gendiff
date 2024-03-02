@@ -20,6 +20,7 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         ),
         'H' => 
         array (
+            'Hexlet\\Code\\Tests\\' => 18,
             'Hexlet\\Code\\' => 12,
         ),
         'D' => 
@@ -32,6 +33,10 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'Hexlet\\Code\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests',
         ),
         'Hexlet\\Code\\' => 
         array (
