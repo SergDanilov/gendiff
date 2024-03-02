@@ -4,7 +4,7 @@ namespace Hexlet\Code\Differ;
 
 function genDiff($filePath1, $filePath2, $format)
 {
-    if (file_exists($filePath1)) {
+    // if (file_exists($filePath1)) {
         $file1GetContent =  file_get_contents($filePath1);
         $fileOne = json_decode($file1GetContent, true);
         foreach($fileOne as $key => $value) {
@@ -12,10 +12,10 @@ function genDiff($filePath1, $filePath2, $format)
                 $fileOne[$key] = ($value === true) ? 'true' : 'false';
             }
         }
-    } else {
-        throw new \Exception("Unable to open file: '{$filePath1}'!");
-    }
-    if (file_exists($filePath2)) {
+    // } else {
+    //     throw new \Exception("Unable to open file: '{$filePath1}'!");
+    // }
+    // if (file_exists($filePath2)) {
         $file2GetContent =  file_get_contents($filePath2);
         $fileTwo = json_decode($file2GetContent, true);
         foreach($fileTwo as $key => $value) {
@@ -23,9 +23,9 @@ function genDiff($filePath1, $filePath2, $format)
                 $fileTwo[$key] = ($value === true) ? 'true' : 'false';
             }
         }
-    } else {
-        throw new \Exception("Unable to open file: '{$filePath2}'!");
-    }
+    // } else {
+    //     throw new \Exception("Unable to open file: '{$filePath2}'!");
+    // }
     // print_r($fileOne);
     // print_r($fileTwo);
     $result = "{\n";
