@@ -16,8 +16,8 @@ class DifferTest extends TestCase
     {
         // Сначала идет ожидаемое значение (expected)
         // И только потом актуальное (actual)
-        $path1 = __DIR__ . "/fixtures/file1.json" ;
-        $path2 = __DIR__ . "/fixtures/file2.json" ;
+        $path1 = "file1.json" ;
+        $path2 = "file2.json" ;
         $this->assertEquals(
 '{
   -  follow: false
