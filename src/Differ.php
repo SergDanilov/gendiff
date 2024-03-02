@@ -1,11 +1,17 @@
 <?php
 
 namespace Hexlet\Code\Differ;
-
+function getCorrectPath($path) 
+{
+    $parts = [__DIR__, 'fixtures', $path];
+    return realpath(implode('/', $parts));
+}
 function genDiff($filePath1, $filePath2)
 {
-    if (file_exists($filePath1)) {
-        $file1GetContent =  file_get_contents($filePath1);
+    $file1 = getCorrectPath($filePath1);
+    $file2 = getCorrectPath($filePath2);
+    if (file_exists($file1)) {
+        $file1GetContent =  file_get_contents($file1);
         $fileOne = json_decode($file1GetContent, true);
         foreach($fileOne as $key => $value) {
             if (is_bool($value) === true) {
@@ -13,10 +19,10 @@ function genDiff($filePath1, $filePath2)
             }
         }
     } else {
-        throw new \Exception("Unable to open file: '{$filePath1}'!");
+        throw new \Exception("Unable to open file: '{$file1}'!");
     }
-    if (file_exists($filePath2)) {
-        $file2GetContent =  file_get_contents($filePath2);
+    if (file_exists($file2)) {
+        $file2GetContent =  file_get_contents($file2);
         $fileTwo = json_decode($file2GetContent, true);
         foreach($fileTwo as $key => $value) {
             if (is_bool($value) === true) {
@@ -24,7 +30,7 @@ function genDiff($filePath1, $filePath2)
             }
         }
     } else {
-        throw new \Exception("Unable to open file: '{$filePath2}'!");
+        throw new \Exception("Unable to open file: '{$file2}'!");
     }
     // print_r($fileOne);
     // print_r($fileTwo);
