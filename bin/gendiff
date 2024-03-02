@@ -31,7 +31,7 @@ Options:
 DOC;
 
 $params = [
-  'version'=>'1.0.0'
+  'version'=>'^1.0'
 ];
 
 $args = Docopt::handle($doc, $params);

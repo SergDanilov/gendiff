@@ -1,8 +1,6 @@
 # Makefile
 install:
 	composer install
-manual:
-	./bin/manual
 gendiff:
 	./bin/gendiff
 validate:
