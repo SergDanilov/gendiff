@@ -4,6 +4,7 @@ namespace Hexlet\Code\Differ;
 function getCorrectPath($path) 
 {
     $parts = [__DIR__, 'fixtures', $path];
+    var_dump(realpath(implode('/', $parts)));
     return realpath(implode('/', $parts));
 }
 function genDiff($filePath1, $filePath2)
