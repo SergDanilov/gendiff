@@ -7,8 +7,6 @@ Runner to Differ
 */
 
 use function Hexlet\Code\Differ\genDiff;
-use function cli\line;
-use function cli\prompt;
 
 $autoloadPath1 = __DIR__ . '/../../../autoload.php';
 $autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
@@ -18,15 +16,27 @@ if (file_exists($autoloadPath1)) {
 } else {
     require_once $autoloadPath2;
 }
+$doc = <<<DOC
+gendiff -h
+Generate diff
+Usage:
+  gendiff (-h|--help)
+  gendiff (-v|--version)
+  gendiff [--format <fmt>] <firstFile> <secondFile>
 
-line('Welcome to the "Difference calculator"!');
-line('"Difference calculator" is a program that determines the difference between two data structures.'); 
-line('A similar mechanism is used when outputting tests or automatically tracking changes in configuration files');
-$filePath1 = prompt('Please enter path to file#1');
-line("ok it is:, %s!", $filePath1);
-$filePath2 = prompt('Please enter path to file#2');
-line("good!");
+Options:
+  -h --help                     Show this screen
+  -v --version                  Show version
+  --format <fmt>                Report format [default: stylish]
+DOC;
 
-$filePath1 = __DIR__ . $filePath1;
-$filePath2 = __DIR__ . $filePath2;
-genDiff($filePath1, $filePath2);
+$params = [
+  'version'=>'1.0.0'
+];
+
+$args = Docopt::handle($doc, $params);
+
+$filePath1 = $args->args['<firstFile>'];
+$filePath2 = $args->args['<secondFile>'];
+echo genDiff($filePath1, $filePath2);
+
