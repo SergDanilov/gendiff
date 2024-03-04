@@ -54,7 +54,7 @@ function genDiff($filePath1, $filePath2)
         $result = $result . " {$value} {$key}\n";
     }
 
-    $result = $result . "}\n";
+    $result = $result . "}";
     // print_r($result);
     return $result;
 }
