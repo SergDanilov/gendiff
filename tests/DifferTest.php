@@ -4,7 +4,7 @@ namespace Hexlet\Code\Tests;
 
 use PHPUnit\Framework\TestCase;
 use function Hexlet\Code\Differ\genDiff;
-
+// функция для формирования путей до тестируемых файлов
 function getFixturePath($path)
 {
     $parts = [__DIR__, 'fixtures', $path];
@@ -14,7 +14,6 @@ function getFixturePath($path)
 // имя класса совпадает с именем файла
 class DifferTest extends TestCase
 {
-    
     // Метод, функция определенная внутри класса
     // Должна начинаться со слова test
     // public – чтобы PHPUnit мог вызвать этот тест снаружи
