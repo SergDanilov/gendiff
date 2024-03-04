@@ -3,7 +3,9 @@
 namespace Hexlet\Code\Tests;
 
 use PHPUnit\Framework\TestCase;
+
 use function Hexlet\Code\Differ\genDiff;
+
 // функция для формирования путей до тестируемых файлов
 function getFixturePath($path)
 {
