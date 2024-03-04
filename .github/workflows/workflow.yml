@@ -1,0 +1,24 @@
+name: test-workflow
+on: push
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: '8.2'
+      - name: Install
+        run: make install
+      - name: Run linter
+        run: make lint
+      - name: Run tests
+        run: make test
+      - name: Run test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_TOKEN }}
