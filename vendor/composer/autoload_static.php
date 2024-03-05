@@ -8,12 +8,18 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
 {
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         'be01b9b16925dcb22165c40b46681ac6' => __DIR__ . '/..' . '/wp-cli/php-cli-tools/lib/cli/cli.php',
         '7a4aeb08a83e98b8597ede2cef7feeff' => __DIR__ . '/../..' . '/src/Differ.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Component\\Yaml\\' => 23,
+        ),
         'P' => 
         array (
             'PhpParser\\' => 10,
@@ -31,6 +37,14 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Symfony\\Component\\Yaml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
