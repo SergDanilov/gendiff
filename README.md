@@ -29,7 +29,7 @@ make install
 make manual
 ```
 
-### Run calculator
+### Run file's comparison
 
 ```sh
 make gendiff
