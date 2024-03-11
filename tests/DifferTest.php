@@ -19,12 +19,22 @@ class DifferTest extends TestCase
     // Метод, функция определенная внутри класса
     // Должна начинаться со слова test
     // public – чтобы PHPUnit мог вызвать этот тест снаружи
-    public function testGenDiff(): void
+    /**
+     * @dataProvider provider
+     */
+    public function testGenDiff($data): void
     {
         // Сначала идет ожидаемое значение (expected)
         // И только потом актуальное (actual)
-        $path1 = "file1.json";
-        $path2 = "file2.json";
-        $this->assertStringEqualsFile(getFixturePath("sampleString.txt"), genDiff($path1, $path2));
+        // $path1 = "file1.json";
+        // $path2 = "file2.json";
+        $this->assertStringEqualsFile(getFixturePath("sampleString.txt"), genDiff($data));
+    }
+    public function provider() 
+    {
+        return [
+            [$path1 => "file1.json", $path2 => "file1.json"],
+            [$path1 => "file1.yml", $path2 => "file2.yml"],
+        ];
     }
 }
