@@ -10,7 +10,7 @@
  */
 namespace PharIo\Manifest;
 
-use RuntimeException;
+use InvalidArgumentException;
 
-class ManifestDocumentException extends RuntimeException implements Exception {
+class NoEmailAddressException extends InvalidArgumentException implements Exception {
 }
