@@ -10,7 +10,7 @@ use function Hexlet\Code\Differ\genDiff;
 function getFixturePath($path)
 {
     $parts = [__DIR__, 'fixtures', $path];
-    return realpath(implode('/', $parts));
+    return implode('/', $parts);
 }
 // класс DifferTest наследует класс TestCase
 // имя класса совпадает с именем файла
@@ -33,7 +33,7 @@ class DifferTest extends TestCase
     public function provider() 
     {
         return [
-            'jsonTojson' => [getFixturePath("sampleString.txt"), getFixturePath("file1.json"), getFixturePath("file1.json")]
+            'jsonTojson' => [getFixturePath("sampleString.txt"), "file1.json", "file1.json"]
             // [$path1 => "file1.yml", $path2 => "file2.yml"],
         ];
     }
