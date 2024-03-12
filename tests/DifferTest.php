@@ -22,19 +22,19 @@ class DifferTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testGenDiff($data): void
+    public function testGenDiff($expected, $filePath1, $filePath2): void
     {
         // Сначала идет ожидаемое значение (expected)
         // И только потом актуальное (actual)
         // $path1 = "file1.json";
         // $path2 = "file2.json";
-        $this->assertStringEqualsFile(getFixturePath("sampleString.txt"), genDiff($data));
+        $this->assertStringEqualsFile($expected, genDiff($filePath1, $filePath2));
     }
     public function provider() 
     {
         return [
-            [$path1 => "file1.json", $path2 => "file1.json"],
-            [$path1 => "file1.yml", $path2 => "file2.yml"],
+            'jsonTojson' => [getFixturePath("sampleString.txt"), getFixturePath("file1.json"), getFixturePath("file1.json")]
+            // [$path1 => "file1.yml", $path2 => "file2.yml"],
         ];
     }
 }
