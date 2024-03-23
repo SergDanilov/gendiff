@@ -9,52 +9,81 @@ function getCorrectPath($path)
 }
 function genDiff($filePath1, $filePath2)
 {
-    $file1 = getCorrectPath($filePath1);
-    $file2 = getCorrectPath($filePath2);
-    if (file_exists($file1)) {
-        $file1GetContent =  file_get_contents($file1);
-        $fileOne = json_decode($file1GetContent, true);
-        foreach ($fileOne as $key => $value) {
+    $currentArr = getCorrectPath($filePath1);
+    $newArr = getCorrectPath($filePath2);
+    if (file_exists($currentArr)) {
+        $currentArrGetContent =  file_get_contents($currentArr);
+        $currentData = json_decode($currentArrGetContent, true);
+        foreach ($currentData as $key => $value) {
             if (is_bool($value) === true) {
-                $fileOne[$key] = ($value === true) ? 'true' : 'false';
+                $currentData[$key] = ($value === true) ? 'true' : 'false';
             }
         }
     } else {
-        throw new \Exception("Unable to open file: '{$file1}'!");
+        throw new \Exception("Unable to open file: '{$currentArr}'!");
     }
-    if (file_exists($file2)) {
-        $file2GetContent =  file_get_contents($file2);
-        $fileTwo = json_decode($file2GetContent, true);
-        foreach ($fileTwo as $key => $value) {
+    if (file_exists($newArr)) {
+        $newArrGetContent =  file_get_contents($newArr);
+        $newData = json_decode($newArrGetContent, true);
+        foreach ($newData as $key => $value) {
             if (is_bool($value) === true) {
-                $fileTwo[$key] = ($value === true) ? 'true' : 'false';
+                $newData[$key] = ($value === true) ? 'true' : 'false';
             }
         }
     } else {
-        throw new \Exception("Unable to open file: '{$file2}'!");
+        throw new \Exception("Unable to open file: '{$newArr}'!");
     }
-    // print_r($fileOne);
-    // print_r($fileTwo);
-    $result = "{\n";
-    $resultEquals = array_intersect($fileOne, $fileTwo);
-    $difference = [];
-    foreach ($resultEquals as $key => $value) {
-        $difference["{$key}: {$value}"] = "   ";
+    // print_r($currentData);
+    // print_r($newData);
+    $oldKey = [];
+    foreach ($currentData as $k1 => $v1) 
+    {
+        if (array_key_exists($k1, $newData)) {
+            foreach ($newData as $k2 => $v2) {
+                    if ($k1 === $k2 && $v1 == $v2) {
+                        $oldKey[] = "{$k1}: {$v1}";
+                    } elseif ($k1 === $k2 && $v1 != $v2) {
+                        $oldKey[] = "{$k1}: {$v1}-";
+                    }
+            }
+        } else {
+            $oldKey[] = "{$k1}: {$v1}-";
+        }
+        
     }
-    $result1 = array_diff($fileOne, $fileTwo);
-    foreach ($result1 as $key => $value) {
-        $difference["{$key}: {$value}"] = " - ";
+    sort($oldKey);
+    // print_r($oldKey);
+    $newKey = [];
+    foreach ($newData as $k2 => $v2) 
+    {
+    if (!array_key_exists($k2, $currentData)) {
+            $newKey[] = "{$k2}: {$v2}+";
+        } else {
+            foreach ($currentData as $k1 => $v1) {
+                if ($k1 == $k2 && $v1 == $v2){
+                    // $newKey[] = "{$k2}: {$v2}";
+                } elseif ($k1 == $k2 && $v1 != $v2) {
+                    $newKey[] = "{$k1}: {$v2}+";
+                }
+            }
+        }      
     }
-    $result2 = array_diff($fileTwo, $fileOne);
-    foreach ($result2 as $key => $value) {
-        $difference["{$key}: {$value}"] = " + ";
-    }
-    ksort($difference);
-    foreach ($difference as $key => $value) {
-        $result = $result . " {$value} {$key}\n";
-    }
-
-    $result = $result . "}";
+    sort($newKey);
+    // print_r($newKey);
+    $result = array_merge($oldKey,$newKey);
     // print_r($result);
-    return $result;
+    $resStr = "{\n";
+    foreach($result as $key => $val) {
+        $str = substr($val, 0, -1);
+        if ($val[-1] === '-') {
+            $resStr = $resStr . " - {$str}\n"; 
+        } elseif ($val[-1] === '+') {
+            $resStr = $resStr . " + {$str}\n";
+        } else {
+            $resStr = $resStr . "   {$val}\n";
+        }
+    }
+    $resStr = $resStr . "}\n";
+    // print_r($resStr);
+    return $resStr;
 }
