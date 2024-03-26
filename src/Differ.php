@@ -36,47 +36,44 @@ function genDiff($filePath1, $filePath2)
     // print_r($currentData);
     // print_r($newData);
     $oldKey = [];
-    foreach ($currentData as $k1 => $v1) 
-    {
+    foreach ($currentData as $k1 => $v1) {
         if (array_key_exists($k1, $newData)) {
             foreach ($newData as $k2 => $v2) {
-                    if ($k1 === $k2 && $v1 == $v2) {
-                        $oldKey[] = "{$k1}: {$v1}";
-                    } elseif ($k1 === $k2 && $v1 != $v2) {
-                        $oldKey[] = "{$k1}: {$v1}-";
-                    }
+                if ($k1 === $k2 && $v1 == $v2) {
+                    $oldKey[] = "{$k1}: {$v1}";
+                } elseif ($k1 === $k2 && $v1 != $v2) {
+                    $oldKey[] = "{$k1}: {$v1}-";
+                }
             }
         } else {
             $oldKey[] = "{$k1}: {$v1}-";
         }
-        
     }
     sort($oldKey);
     // print_r($oldKey);
     $newKey = [];
-    foreach ($newData as $k2 => $v2) 
-    {
-    if (!array_key_exists($k2, $currentData)) {
+    foreach ($newData as $k2 => $v2) {
+        if (!array_key_exists($k2, $currentData)) {
             $newKey[] = "{$k2}: {$v2}+";
         } else {
             foreach ($currentData as $k1 => $v1) {
-                if ($k1 == $k2 && $v1 == $v2){
+                if ($k1 == $k2 && $v1 == $v2) {
                     // $newKey[] = "{$k2}: {$v2}";
                 } elseif ($k1 == $k2 && $v1 != $v2) {
                     $newKey[] = "{$k1}: {$v2}+";
                 }
             }
-        }      
+        }
     }
     sort($newKey);
     // print_r($newKey);
-    $result = array_merge($oldKey,$newKey);
+    $result = array_merge($oldKey, $newKey);
     // print_r($result);
     $resStr = "{\n";
-    foreach($result as $key => $val) {
+    foreach ($result as $key => $val) {
         $str = substr($val, 0, -1);
         if ($val[-1] === '-') {
-            $resStr = $resStr . " - {$str}\n"; 
+            $resStr = $resStr . " - {$str}\n";
         } elseif ($val[-1] === '+') {
             $resStr = $resStr . " + {$str}\n";
         } else {
