@@ -41,4 +41,3 @@ $filePath2 = $args->args['<secondFile>'];
 $format = $args->args['--format'];
 
 echo genDiff($filePath1, $filePath2, $format = "stylish");
-

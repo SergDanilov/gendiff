@@ -36,4 +36,5 @@ make gendiff
 ```
 
 ## [List of asciinema links for comparisons](https://asciinema.org/~SergeyDani85)
-<a href="https://asciinema.org/a/645452" target="_blank"><img src="https://asciinema.org/a/645452.svg" height="auto" width="100%" alt="two files comparison demonstration" title="two-simple-files-comparison"/></a>
+<a href="https://asciinema.org/a/645452" target="_blank"><img src="https://asciinema.org/a/645452.svg" height="auto" width="100%" alt="two json files comparison demonstration" title="two-simple-files-comparison"/></a>
+<a href="https://asciinema.org/a/649361" target="_blank"><img src="https://asciinema.org/a/649361.svg" height="auto" width="100%" alt="two yml files comparison demonstration" title="two-simple-files-comparison"/></a>
