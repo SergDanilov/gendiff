@@ -12,6 +12,7 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         'be01b9b16925dcb22165c40b46681ac6' => __DIR__ . '/..' . '/wp-cli/php-cli-tools/lib/cli/cli.php',
         '7a4aeb08a83e98b8597ede2cef7feeff' => __DIR__ . '/../..' . '/src/Differ.php',
+        '0a4844c804ca3f8d2e5e453905ea2939' => __DIR__ . '/../..' . '/src/Parsers.php',
     );
 
     public static $prefixLengthsPsr4 = array (

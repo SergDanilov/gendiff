@@ -11,4 +11,5 @@ return array(
     'ec07570ca5a812141189b1fa81503674' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     'be01b9b16925dcb22165c40b46681ac6' => $vendorDir . '/wp-cli/php-cli-tools/lib/cli/cli.php',
     '7a4aeb08a83e98b8597ede2cef7feeff' => $baseDir . '/src/Differ.php',
+    '0a4844c804ca3f8d2e5e453905ea2939' => $baseDir . '/src/Parsers.php',
 );
