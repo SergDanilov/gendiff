@@ -11,10 +11,5 @@ function convert($currentArr)
     } else {
         $currentData = Yaml::parse($currentArr);
     }
-    foreach ($currentData as $key => $value) {
-        if (is_bool($value) === true) {
-            $currentData[$key] = ($value === true) ? 'true' : 'false';
-        }
-    }
     return $currentData;
 }
