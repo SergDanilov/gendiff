@@ -12,8 +12,10 @@ function getCorrectPath($path)
 
 function genDiff($filePath1, $filePath2)
 {
+    //корректируем путь до файлов-фикстур
     $currentArr = getCorrectPath($filePath1);
     $newArr = getCorrectPath($filePath2);
+    //проверяем существование файлов, парсим их, преобразуем в массив php
     if (file_exists($currentArr)) {
         $currentArrGetContent =  file_get_contents($currentArr);
         $currentData = convert($currentArrGetContent);
@@ -26,6 +28,18 @@ function genDiff($filePath1, $filePath2)
     } else {
         throw new \Exception("Unable to open file: '{$newArr}'!");
     }
+    //работаем с булевыми значениями массива
+    foreach ($currentData as $key => $value) {
+        if (is_bool($value) === true) {
+            $currentData[$key] = ($value === true) ? 'true' : 'false';
+        }
+    }
+    foreach ($newData as $key => $value) {
+        if (is_bool($value) === true) {
+            $newData[$key] = ($value === true) ? 'true' : 'false';
+        }
+    }
+    //сравниваем старый массив с новым
     $oldKey = [];
     foreach ($currentData as $k1 => $v1) {
         if (array_key_exists($k1, $newData)) {
@@ -57,6 +71,7 @@ function genDiff($filePath1, $filePath2)
     }
     sort($newKey);
     $result = array_merge($oldKey, $newKey);
+    //форматируем для корректного представления в виде строки, текста..
     $resStr = "{\n";
     foreach ($result as $key => $val) {
         $str = substr($val, 0, -1);
