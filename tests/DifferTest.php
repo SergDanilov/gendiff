@@ -21,14 +21,15 @@ class DifferTest extends TestCase
      */
     public function testGenDiff($expected, $filePath1, $filePath2): void
     {
-
         $this->assertStringEqualsFile($expected, genDiff($filePath1, $filePath2));
     }
     public function provider()
     {
         return [
             'jsonTojson' => [getFixturePath("sampleString.txt"), "file1.json", "file2.json"],
-            'ymlToyml' => [getFixturePath("sampleString.txt"), "file1.yml", "file2.yml"]
+            'ymlToyml' => [getFixturePath("sampleString.txt"), "file1.yml", "file2.yml"],
+            'nestedJsonTojson' => [getFixturePath("nestedString.txt"), "nested1.json", "nested2.json"],
+            'nestedymlToyml' => [getFixturePath("nestedString.txt"), "nested1.yml", "nested2.yml"]
         ];
     }
 }
