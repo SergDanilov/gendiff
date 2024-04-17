@@ -3,6 +3,8 @@
 namespace Hexlet\Code\Differ;
 
 use function Hexlet\Code\Parsers\convert;
+use function Hexlet\Code\Formatter\format;
+use function Funct\Collection\union;
 
 function getCorrectPath($path)
 {
@@ -10,76 +12,66 @@ function getCorrectPath($path)
     return realpath(implode('/', $parts));
 }
 //проверяем существование файлов, парсим их, преобразуем в массив php
-function getContent($file)
+function getContent($filePath)
 {
-    if (file_exists($file)) {
-        $fileGetContent =  file_get_contents($file);
-        $fileData = convert($fileGetContent);
-    } else {
-        throw new \Exception("Unable to open file: '{$original}'!");
-    }
-    //работаем с булевыми значениями массива
-    foreach ($fileData as $key => $value) {
-        if (is_bool($value) === true) {
-            $fileData[$key] = ($value === true) ? 'true' : 'false';
-        }
-    }
-    return $fileData;
+    $pathParts = pathinfo($filePath);
+
+    $fileContent = file_get_contents($filePath);
+    $parsedData = convert($fileContent, $pathParts['extension']);
+    return $parsedData;
 }
-//форматируем для корректного представления в виде строки, текста..
-function formatToString($result)
+//построение дерева
+function bildDiff($originalData, $newData)
 {
-    $resStr = "{\n";
-    foreach ($result as $key => $val) {
-        $str = substr($val, 0, -1);
-        if ($val[-1] === '-') {
-            $resStr = $resStr . " - {$str}\n";
-        } elseif ($val[-1] === '+') {
-            $resStr = $resStr . " + {$str}\n";
-        } else {
-            $resStr = $resStr . "   {$val}\n";
+    $old = get_object_vars($originalData);
+    $new = get_object_vars($newData);
+    $allKeys = union(array_keys($old), array_keys($new));
+    sort($allKeys);
+    $tree = array_map(function($key) use ($old, $new) {
+        if (is_object($new[$key]) && is_object($old[$key])) {
+            return [
+                "key"  => $key,
+                "type" => "nested",
+                "children" => bildDiff($old[$key], $new[$key]),
+            ];
+        } elseif (!array_key_exists($key, $new)) {
+            return [
+                "key"  => $key,
+                "type" => "deleted",
+                "value" => $new[$key],
+            ];
+        } elseif (!array_key_exists($key, $old)) {
+            return [
+                "key"  => $key,
+                "type" => "added",
+                "value" => $old[$key],
+            ];
+        } elseif ($new[$key] !== $old[$key]) {
+            return [
+                "key"  => $key,
+                "type" => "changed",
+                "value" => $new[$key],
+                "oldValue" => $old[$key],
+            ];
         }
-    }
-    $resStr = $resStr . "}\n";
-    return $resStr;
+        return [
+            "key"  => $key,
+            "type" => "unchanged",
+            "value" => $old[$key],
+        ];
+    }, $allKeys);
+    
+    print_r($tree);
+    return $tree;
 }
 function genDiff($filePath1, $filePath2)
 {
     //корректируем путь до файлов-фикстур
     $original = getCorrectPath($filePath1);
     $new = getCorrectPath($filePath2);
+    //получаем данные
     $originalData = getContent($original);
     $newData = getContent($new);
-
-    //сравниваем старый массив с новым
-    $oldKey = [];
-    foreach ($originalData as $k1 => $v1) {
-        if (array_key_exists($k1, $newData)) {
-            foreach ($newData as $k2 => $v2) {
-                if ($k1 === $k2 && $v1 == $v2) {
-                    $oldKey[] = "{$k1}: {$v1}";
-                } elseif ($k1 === $k2 && $v1 != $v2) {
-                    $oldKey[] = "{$k1}: {$v1}-";
-                }
-            }
-        } else {
-            $oldKey[] = "{$k1}: {$v1}-";
-        }
-    }
-    sort($oldKey);
-    $newKey = [];
-    foreach ($newData as $k2 => $v2) {
-        if (!array_key_exists($k2, $originalData)) {
-            $newKey[] = "{$k2}: {$v2}+";
-        } else {
-            foreach ($originalData as $k1 => $v1) {
-                if ($k1 == $k2 && $v1 != $v2) {
-                    $newKey[] = "{$k1}: {$v2}+";
-                }
-            }
-        }
-    }
-    sort($newKey);
-    $result = array_merge($oldKey, $newKey);
-    return formatToString($result);
+    $result = bildDiff($originalData, $newData);
+    return format($result);
 }
