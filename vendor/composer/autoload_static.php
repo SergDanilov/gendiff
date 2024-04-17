@@ -9,6 +9,11 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '4ceedf97791d93203e20d2cdee63c4d8' => __DIR__ . '/..' . '/funct/funct/src/Collection.php',
+        '3fa95b6de8b4ba809a4086bd187dc285' => __DIR__ . '/..' . '/funct/funct/src/General.php',
+        '9a6e6879c844337a8d58143b6e0512ae' => __DIR__ . '/..' . '/funct/funct/src/Invoke.php',
+        'a73a3901d9218302158239badf0be56a' => __DIR__ . '/..' . '/funct/funct/src/Object.php',
+        '3fdd7195df86076e7b28f4a0e5b97dbd' => __DIR__ . '/..' . '/funct/funct/src/Strings.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         'be01b9b16925dcb22165c40b46681ac6' => __DIR__ . '/..' . '/wp-cli/php-cli-tools/lib/cli/cli.php',
         '7a4aeb08a83e98b8597ede2cef7feeff' => __DIR__ . '/../..' . '/src/Differ.php',
@@ -29,6 +34,10 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         array (
             'Hexlet\\Code\\Tests\\' => 18,
             'Hexlet\\Code\\' => 12,
+        ),
+        'F' => 
+        array (
+            'Funct\\' => 6,
         ),
         'D' => 
         array (
@@ -57,6 +66,10 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'Hexlet\\Code\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Funct\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/funct/funct/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (

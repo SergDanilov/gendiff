@@ -8,6 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     '6124b4c8570aa390c21fafd04a26c69f' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     '320cde22f66dd4f5d3fd621d3e88b98f' => $vendorDir . '/symfony/polyfill-ctype/bootstrap.php',
+    '4ceedf97791d93203e20d2cdee63c4d8' => $vendorDir . '/funct/funct/src/Collection.php',
+    '3fa95b6de8b4ba809a4086bd187dc285' => $vendorDir . '/funct/funct/src/General.php',
+    '9a6e6879c844337a8d58143b6e0512ae' => $vendorDir . '/funct/funct/src/Invoke.php',
+    'a73a3901d9218302158239badf0be56a' => $vendorDir . '/funct/funct/src/Object.php',
+    '3fdd7195df86076e7b28f4a0e5b97dbd' => $vendorDir . '/funct/funct/src/Strings.php',
     'ec07570ca5a812141189b1fa81503674' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     'be01b9b16925dcb22165c40b46681ac6' => $vendorDir . '/wp-cli/php-cli-tools/lib/cli/cli.php',
     '7a4aeb08a83e98b8597ede2cef7feeff' => $baseDir . '/src/Differ.php',
