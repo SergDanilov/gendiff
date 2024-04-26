@@ -32,36 +32,38 @@ function bildDiff($originalData, $newData)
             return [
                 "key"  => $key,
                 "type" => "nested",
-                "children" => bildDiff($old[$key], $new[$key]),
+                "children" => bildDiff($old[$key], $new[$key])
             ];
-        } elseif (!array_key_exists($key, $new)) {
+        } 
+        if (!array_key_exists($key, $new)) {
             return [
                 "key"  => $key,
                 "type" => "deleted",
-                "value" => $old[$key],
+                "value" => $old[$key]
             ];
-        } elseif (!array_key_exists($key, $old)) {
+        } 
+        if (!array_key_exists($key, $old)) {
             return [
                 "key"  => $key,
                 "type" => "added",
-                "value" => $new[$key],
+                "value" => $new[$key]
             ];
-        } elseif ($new[$key] !== $old[$key]) {
+        } 
+        if ($new[$key] !== $old[$key]) {
             return [
                 "key"  => $key,
                 "type" => "changed",
                 "value" => $new[$key],
-                "oldValue" => $old[$key],
+                "oldValue" => $old[$key]
             ];
         }
         return [
             "key"  => $key,
             "type" => "unchanged",
-            "value" => $old[$key],
+            "value" => $new[$key]
         ];
     }, $allKeys);
-    
-    print_r($tree);
+    // print_r($tree);
     return $tree;
 }
 function genDiff($filePath1, $filePath2)
