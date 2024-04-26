@@ -3,7 +3,7 @@
 namespace Hexlet\Code\Differ;
 
 use function Hexlet\Code\Parsers\convert;
-use function Hexlet\Code\Formatter\format;
+use function Hexlet\Code\Formatters\format;
 use function Funct\Collection\union;
 
 function getCorrectPath($path)
