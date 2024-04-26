@@ -28,7 +28,9 @@ function bildDiff($originalData, $newData)
     $allKeys = union(array_keys($old), array_keys($new));
     sort($allKeys);
     $tree = array_map(function($key) use ($old, $new) {
-        if (is_object($new[$key]) && is_object($old[$key])) {
+        $oldKeyExist = isset($old[$key]) && is_object($old[$key]);
+        $newKeyExist = isset($new[$key]) && is_object($new[$key]);
+        if ($newKeyExist && $oldKeyExist) {
             return [
                 "key"  => $key,
                 "type" => "nested",
@@ -63,7 +65,6 @@ function bildDiff($originalData, $newData)
             "value" => $new[$key]
         ];
     }, $allKeys);
-    // print_r($tree);
     return $tree;
 }
 function genDiff($filePath1, $filePath2)
