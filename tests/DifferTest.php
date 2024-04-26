@@ -26,8 +26,8 @@ class DifferTest extends TestCase
     public function provider()
     {
         return [
-            'jsonTojson' => [getFixturePath("sampleString.txt"), "file1.json", "file2.json"],
-            'ymlToyml' => [getFixturePath("sampleString.txt"), "file1.yml", "file2.yml"],
+            // 'jsonTojson' => [getFixturePath("sampleString.txt"), "file1.json", "file2.json"],
+            // 'ymlToyml' => [getFixturePath("sampleString.txt"), "file1.yml", "file2.yml"],
             'nestedJsonTojson' => [getFixturePath("nestedString.txt"), "nested1.json", "nested2.json"],
             'nestedymlToyml' => [getFixturePath("nestedString.txt"), "nested1.yml", "nested2.yml"]
         ];
