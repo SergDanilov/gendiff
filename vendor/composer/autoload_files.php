@@ -18,4 +18,5 @@ return array(
     '7a4aeb08a83e98b8597ede2cef7feeff' => $baseDir . '/src/Differ.php',
     '0a4844c804ca3f8d2e5e453905ea2939' => $baseDir . '/src/Parsers.php',
     '69532da255bf29893da8007b5002c6d2' => $baseDir . '/src/Formatter.php',
+    '3cea10ce1c768bf3ed3036859555a654' => $baseDir . '/src/Stylish.php',
 );
