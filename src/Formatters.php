@@ -13,8 +13,8 @@ function format($tree, $formatName)
             $resStr = buildStr($tree);
             return "{\n{$resStr}\n}\n";
         case "plain":
-                $resStr = buildPlainText($tree);
-                return  $resStr;
+            $resStr = buildPlainText($tree);
+            return  $resStr;
     }
     return $resStr;
 }

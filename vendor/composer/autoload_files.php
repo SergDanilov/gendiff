@@ -17,6 +17,7 @@ return array(
     'be01b9b16925dcb22165c40b46681ac6' => $vendorDir . '/wp-cli/php-cli-tools/lib/cli/cli.php',
     '7a4aeb08a83e98b8597ede2cef7feeff' => $baseDir . '/src/Differ.php',
     '0a4844c804ca3f8d2e5e453905ea2939' => $baseDir . '/src/Parsers.php',
-    '69532da255bf29893da8007b5002c6d2' => $baseDir . '/src/Formatter.php',
-    '3cea10ce1c768bf3ed3036859555a654' => $baseDir . '/src/Stylish.php',
+    'b0ed28994c09cf4b33b64952ee6841d9' => $baseDir . '/src/Formatters.php',
+    '6461b807e4ee82eefd6a0289818be010' => $baseDir . '/src/Formatters/Stylish.php',
+    'd050924b2f042a7e8991c637b1d4747e' => $baseDir . '/src/Formatters/Plain.php',
 );
