@@ -38,13 +38,13 @@ function bildDiff($originalData, $newData)
             return [
                 "key"  => $key,
                 "type" => "deleted",
-                "value" => $new[$key],
+                "value" => $old[$key],
             ];
         } elseif (!array_key_exists($key, $old)) {
             return [
                 "key"  => $key,
                 "type" => "added",
-                "value" => $old[$key],
+                "value" => $new[$key],
             ];
         } elseif ($new[$key] !== $old[$key]) {
             return [
