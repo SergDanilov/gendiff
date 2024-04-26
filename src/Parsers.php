@@ -13,6 +13,6 @@ function convert($currentData, $format)
         case "yaml":
             return Yaml::parse($currentData, Yaml::PARSE_OBJECT_FOR_MAP);
         default:
-            throw new Exception("Wrong file extension: {$format}");
+            throw new \Exception("Wrong file extension: {$format}");
     }
 }
