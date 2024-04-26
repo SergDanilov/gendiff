@@ -27,7 +27,7 @@ function bildDiff($originalData, $newData)
     $new = get_object_vars($newData);
     $allKeys = union(array_keys($old), array_keys($new));
     sort($allKeys);
-    $tree = array_map(function($key) use ($old, $new) {
+    $tree = array_map(function ($key) use ($old, $new) {
         $oldKeyExist = isset($old[$key]) && is_object($old[$key]);
         $newKeyExist = isset($new[$key]) && is_object($new[$key]);
         if ($newKeyExist && $oldKeyExist) {
@@ -36,21 +36,21 @@ function bildDiff($originalData, $newData)
                 "type" => "nested",
                 "children" => bildDiff($old[$key], $new[$key])
             ];
-        } 
+        }
         if (!array_key_exists($key, $new)) {
             return [
                 "key"  => $key,
                 "type" => "deleted",
                 "value" => $old[$key]
             ];
-        } 
+        }
         if (!array_key_exists($key, $old)) {
             return [
                 "key"  => $key,
                 "type" => "added",
                 "value" => $new[$key]
             ];
-        } 
+        }
         if ($new[$key] !== $old[$key]) {
             return [
                 "key"  => $key,
@@ -67,7 +67,7 @@ function bildDiff($originalData, $newData)
     }, $allKeys);
     return $tree;
 }
-function genDiff($filePath1, $filePath2)
+function genDiff($filePath1, $filePath2, $format)
 {
     //корректируем путь до файлов-фикстур
     $original = getCorrectPath($filePath1);
@@ -76,5 +76,5 @@ function genDiff($filePath1, $filePath2)
     $originalData = getContent($original);
     $newData = getContent($new);
     $result = bildDiff($originalData, $newData);
-    return format($result);
+    return format($result, $format);
 }
