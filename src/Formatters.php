@@ -7,7 +7,6 @@ use function Hexlet\Code\Formatters\Plain\buildPlainText;
 
 function format($tree, $formatName)
 {
-    $resStr = "";
     switch ($formatName) {
         case "stylish":
             $resStr = buildStr($tree);
@@ -15,6 +14,7 @@ function format($tree, $formatName)
         case "plain":
             $resStr = buildPlainText($tree);
             return  $resStr;
+        default:
+            throw new \Exception("Unknown format type: {$formatName}");
     }
-    return $resStr;
 }
