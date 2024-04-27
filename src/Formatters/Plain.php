@@ -18,14 +18,12 @@ function stringify($value)
     if (is_string($value)) {
         return $value;
     }
-    
     $result = "[complex value]";
     return $result;
 }
 
 function buildPlainText($diff)
 {
-        
         $result = array_map(function ($item) {
             $key = $item['key'];
             switch ($item['type']) {
@@ -43,10 +41,11 @@ function buildPlainText($diff)
                     $stringedVal = stringify($item['value']);
                     return "Property '{$key}' was updated. From '{$stringedOldVal}' to '{$stringedVal}'";
                 case "unchanged":
-                    return "{$key}: {$item['value']}";
+                    break;
                 default:
                     throw new \Exception("Unknown item type: {$item['type']}");
             }
         }, $diff);
-        return implode("\n", $result); 
+        $result = array_filter($result, fn($str) => !is_null($str));
+        return implode("\n", $result);
 }
