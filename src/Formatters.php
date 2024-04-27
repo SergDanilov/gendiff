@@ -9,11 +9,10 @@ function format($tree, $formatName)
 {
     switch ($formatName) {
         case "stylish":
-            $resStr = buildStr($tree);
-            return "{\n{$resStr}\n}\n";
+            $result = buildStr($tree);
+            return "{\n{$result}\n}\n";
         case "plain":
-            $resStr = buildPlainText($tree);
-            return  $resStr;
+            return  buildPlainText($tree);
         default:
             throw new \Exception("Unknown format type: {$formatName}");
     }
