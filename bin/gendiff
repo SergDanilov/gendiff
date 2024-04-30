@@ -40,4 +40,4 @@ $filePath1 = $args->args['<firstFile>'];
 $filePath2 = $args->args['<secondFile>'];
 $format = $args->args['--format'];
 
-echo genDiff($filePath1, $filePath2, $format);
+echo genDiff($filePath1, $filePath2, $formatName);
