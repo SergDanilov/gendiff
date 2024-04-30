@@ -21,6 +21,7 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'b0ed28994c09cf4b33b64952ee6841d9' => __DIR__ . '/../..' . '/src/Formatters.php',
         '6461b807e4ee82eefd6a0289818be010' => __DIR__ . '/../..' . '/src/Formatters/Stylish.php',
         'd050924b2f042a7e8991c637b1d4747e' => __DIR__ . '/../..' . '/src/Formatters/Plain.php',
+        'df22d1c2c4acb22e203a3939434f5508' => __DIR__ . '/../..' . '/src/Formatters/Json.php',
     );
 
     public static $prefixLengthsPsr4 = array (
