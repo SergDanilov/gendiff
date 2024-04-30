@@ -24,7 +24,6 @@ function stringify($value)
 
 function buildPlainText($diff, $ancestor = "")
 {
-    $filteredChildren = array_filter($diff, fn($child) => is_array($child));
     $result = array_map(function ($item) use ($ancestor) {
         $key = $item['key'];
         $property = ($ancestor === "") ?  $key : "{$ancestor}.{$key}";
@@ -45,7 +44,7 @@ function buildPlainText($diff, $ancestor = "")
             default:
                 throw new \Exception("Unknown item type: {$item['type']}");
         }
-    }, $filteredChildren);
+    }, $diff);
     $result = array_filter($result, fn($str) => !is_null($str));
     return implode("\n", $result);
 }
