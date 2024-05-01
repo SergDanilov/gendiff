@@ -38,3 +38,5 @@ make gendiff
 ## [List of asciinema links for comparisons](https://asciinema.org/~SergeyDani85)
 <a href="https://asciinema.org/a/645452" target="_blank"><img src="https://asciinema.org/a/645452.svg" height="auto" width="100%" alt="two json files comparison demonstration" title="two-simple-files-comparison"/></a>
 <a href="https://asciinema.org/a/649361" target="_blank"><img src="https://asciinema.org/a/649361.svg" height="auto" width="100%" alt="two yml files comparison demonstration" title="two-simple-files-comparison"/></a>
+<a href="https://asciinema.org/a/657202" target="_blank"><img src="https://asciinema.org/a/657202.svg" height="auto" width="100%" alt="two nested json files comparison" title="two-nested-json-files-comparison"/></a>
+<a href="https://asciinema.org/a/657206" target="_blank"><img src="https://asciinema.org/a/657206.svg" height="auto" width="100%" alt="two nested files comparison use format option" title="two-nested-files-comparison-use-format-option"/></a>
