@@ -67,7 +67,7 @@ function bildDiff($originalData, $newData)
     }, $allKeys);
     return $tree;
 }
-function genDiff($filePath1, $filePath2, $formatName)
+function genDiff($filePath1, $filePath2, $formatName = "stylish")
 {
     //корректируем путь до файлов-фикстур
     $original = getCorrectPath($filePath1);
