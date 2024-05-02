@@ -26,16 +26,13 @@ class DifferTest extends TestCase
     public function provider()
     {
         return [
-            'simpleJsonToJson' => [getFixturePath("sampleString.txt"), "file1.json", "file2.json"],
-            'defaultJsonToJson' => [getFixturePath("stylish.txt"), "nested1.json", "nested2.json"],
-            'stylishJsonToJson' => [getFixturePath("stylish.txt"), "nested1.json", "nested2.json", "stylish"],
-            // 'stylishYamlToYaml' => [getFixturePath("stylish.txt"), "nested1.yaml", "nested2.yaml", "stylish"],
+            'simpleJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json"],
+            'defaultJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json"],
+            'stylishJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json", "stylish"],
             'stylishYmlToYml' => [getFixturePath("stylish.txt"), "nested1.yml", "nested2.yml", "stylish"],
-            'plainJsonToJson' => [getFixturePath("plain.txt"), "nested1.json", "nested2.json", "plain"],
-            // 'plainYamlToYaml' => [getFixturePath("plain.txt"), "nested1.yaml", "nested2.yaml", "plain"],
+            'plainJsonToJson' => [getFixturePath("plain.txt"), "file1.json", "file2.json", "plain"],
             'plainYmlToYml' => [getFixturePath("plain.txt"), "nested1.yml", "nested2.yml", "plain"],
-            'jsonJsonToJson' => [getFixturePath("json.txt"), "nested1.json", "nested2.json", "json"],
-            // 'jsonYamlToYaml' => [getFixturePath("json.txt"), "nested1.yaml", "nested2.yaml", "json"],
+            'jsonJsonToJson' => [getFixturePath("json.txt"), "file1.json", "file2.json", "json"],
             'jsonYmlToYml' => [getFixturePath("json.txt"), "nested1.yml", "nested2.yml", "json"],
         ];
     }
