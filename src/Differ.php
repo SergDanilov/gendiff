@@ -2,6 +2,8 @@
 
 namespace Differ\Differ;
 
+use Exception;
+
 use function Differ\Parsers\convert;
 use function Differ\Formatters\format;
 use function Funct\Collection\union;
@@ -14,6 +16,9 @@ function getCorrectPath($path)
 //проверяем существование файлов, парсим их, преобразуем в массив php
 function getContent($filePath)
 {
+    if (!file_exists($filePath)) {
+        throw new Exception("File $filePath is not found.");
+    }
     $pathParts = pathinfo($filePath);
 
     $fileContent = file_get_contents($filePath);
