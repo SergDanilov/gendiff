@@ -32,9 +32,15 @@ class DifferTest extends TestCase
             'plainJsonToJson' => [getFixturePath("plain.txt"), "nested1.json", "nested2.json", "plain"],
             'plainYamlToYaml' => [getFixturePath("plain.txt"), "nested1.yaml", "nested2.yaml", "plain"],
             'plainYmlToYml' => [getFixturePath("plain.txt"), "nested1.yml", "nested2.yml", "plain"],
-            // 'jsonJsonToJson' => [getFixturePath("json.txt"), "nested1.json", "nested2.json", "json"],
-            // 'jsonYamlToYaml' => [getFixturePath("json.txt"), "nested1.yaml", "nested2.yaml", "json"],
-            // 'jsonYmlToYml' => [getFixturePath("json.txt"), "nested1.yml", "nested2.yml", "json"],
+            'jsonJsonToJson' => [getFixturePath("json.txt"), "nested1.json", "nested2.json", "json"],
+            'jsonYamlToYaml' => [getFixturePath("json.txt"), "nested1.yaml", "nested2.yaml", "json"],
+            'jsonYmlToYml' => [getFixturePath("json.txt"), "nested1.yml", "nested2.yml", "json"],
         ];
+    }
+
+    public function testGenDiffWithoutFormat()
+    {
+        $expected = getFixturePath("stylish.txt");
+        $this->assertStringEqualsFile($expected, genDiff("nested1.json", "nested2.json"));
     }
 }
