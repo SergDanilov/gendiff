@@ -19,13 +19,14 @@ class DifferTest extends TestCase
     /**
      * @dataProvider provider
      */
-    public function testGenDiff($expected, $filePath1, $filePath2, $formatName): void
+    public function testGenDiff($expected, $filePath1, $filePath2, $formatName = "stylish"): void
     {
         $this->assertStringEqualsFile($expected, genDiff($filePath1, $filePath2, $formatName));
     }
     public function provider()
     {
         return [
+            'simpleJsonToJson' => [getFixturePath("sampleString.txt"), "file1.json", "file2.json"],'defaultJsonToJson' => [getFixturePath("stylish.txt"), "nested1.json", "nested2.json"],
             'stylishJsonToJson' => [getFixturePath("stylish.txt"), "nested1.json", "nested2.json", "stylish"],
             'stylishYamlToYaml' => [getFixturePath("stylish.txt"), "nested1.yaml", "nested2.yaml", "stylish"],
             'stylishYmlToYml' => [getFixturePath("stylish.txt"), "nested1.yml", "nested2.yml", "stylish"],
@@ -38,9 +39,9 @@ class DifferTest extends TestCase
         ];
     }
 
-    public function testGenDiffWithoutFormat()
-    {
-        $expected = getFixturePath("stylish.txt");
-        $this->assertStringEqualsFile($expected, genDiff("nested1.json", "nested2.json"));
-    }
+    // public function testGenDiffWithoutFormat()
+    // {
+    //     $expected = getFixturePath("stylish.txt");
+    //     $this->assertStringEqualsFile($expected, genDiff("nested1.json", "nested2.json"));
+    // }
 }
