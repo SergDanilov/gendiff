@@ -1,10 +1,10 @@
 <?php
 
-namespace Hexlet\Code\Formatters;
+namespace Differ\Formatters;
 
-use function Hexlet\Code\Formatters\Stylish\buildStr;
-use function Hexlet\Code\Formatters\Plain\buildPlainText;
-use function Hexlet\Code\Formatters\Json\toJson;
+use function Differ\Formatters\Stylish\buildStr;
+use function Differ\Formatters\Plain\buildPlainText;
+use function Differ\Formatters\Json\toJson;
 
 function format($tree, $formatName)
 {

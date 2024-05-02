@@ -1,6 +1,6 @@
 <?php
 
-namespace Hexlet\Code\Formatters\Stylish;
+namespace Differ\Formatters\Stylish;
 
 function stringify($value, $depth)
 {

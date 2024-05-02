@@ -9,9 +9,9 @@ return array(
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
-    'Hexlet\\Code\\Tests\\' => array($baseDir . '/tests'),
-    'Hexlet\\Code\\' => array($baseDir . '/src'),
     'Funct\\' => array($vendorDir . '/funct/funct/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
+    'Differ\\Tests\\' => array($baseDir . '/tests'),
+    'Differ\\' => array($baseDir . '/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );

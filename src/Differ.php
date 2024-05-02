@@ -1,9 +1,9 @@
 <?php
 
-namespace Hexlet\Code\Differ;
+namespace Differ\Differ;
 
-use function Hexlet\Code\Parsers\convert;
-use function Hexlet\Code\Formatters\format;
+use function Differ\Parsers\convert;
+use function Differ\Formatters\format;
 use function Funct\Collection\union;
 
 function getCorrectPath($path)

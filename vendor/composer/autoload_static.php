@@ -34,11 +34,6 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         array (
             'PhpParser\\' => 10,
         ),
-        'H' => 
-        array (
-            'Hexlet\\Code\\Tests\\' => 18,
-            'Hexlet\\Code\\' => 12,
-        ),
         'F' => 
         array (
             'Funct\\' => 6,
@@ -46,6 +41,8 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
+            'Differ\\Tests\\' => 13,
+            'Differ\\' => 7,
             'DeepCopy\\' => 9,
         ),
     );
@@ -63,14 +60,6 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'Hexlet\\Code\\Tests\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/tests',
-        ),
-        'Hexlet\\Code\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
         'Funct\\' => 
         array (
             0 => __DIR__ . '/..' . '/funct/funct/src',
@@ -78,6 +67,14 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
+        ),
+        'Differ\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests',
+        ),
+        'Differ\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'DeepCopy\\' => 
         array (

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hexlet\Code\Formatters\Plain;
+namespace Differ\Formatters\Plain;
 
 function stringify($value)
 {
