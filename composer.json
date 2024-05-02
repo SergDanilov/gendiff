@@ -20,7 +20,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-          "Hexlet\\Code\\Tests\\": "tests"
+          "Hexlet\\Code\\Tests\\": "tests/"
         }
     },
     "authors": [
