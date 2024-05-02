@@ -29,11 +29,11 @@ class DifferTest extends TestCase
             'simpleJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json"],
             'defaultJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json"],
             'stylishJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json", "stylish"],
-            'stylishYmlToYml' => [getFixturePath("stylish.txt"), "nested1.yml", "nested2.yml", "stylish"],
+            'stylishYmlToYml' => [getFixturePath("stylish.txt"), "file1.yml", "file2.yml", "stylish"],
             'plainJsonToJson' => [getFixturePath("plain.txt"), "file1.json", "file2.json", "plain"],
-            'plainYmlToYml' => [getFixturePath("plain.txt"), "nested1.yml", "nested2.yml", "plain"],
+            'plainYmlToYml' => [getFixturePath("plain.txt"), "file1.yml", "file2.yml", "plain"],
             'jsonJsonToJson' => [getFixturePath("json.txt"), "file1.json", "file2.json", "json"],
-            'jsonYmlToYml' => [getFixturePath("json.txt"), "nested1.yml", "nested2.yml", "json"],
+            'jsonYmlToYml' => [getFixturePath("json.txt"), "file1.yml", "file2.yml", "json"],
         ];
     }
 }
