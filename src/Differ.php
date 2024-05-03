@@ -55,12 +55,7 @@ function bildDiff($originalData, $newData)
     }, $allKeys);
     return $tree;
 }
-function getCorrectPath($path)
-{
-    $parts = [__DIR__, '../tests/fixtures', $path];
-    return realpath(implode('/', $parts));
-}
-//проверяем существование файлов, парсим их, преобразуем в массив php
+//проверяем существование файлов, парсим их, преобразуем в массив
 function getContent($filePath)
 {
     if (!file_exists($filePath)) {
@@ -74,10 +69,6 @@ function getContent($filePath)
 }
 function genDiff($filePath1, $filePath2, $formatName = "stylish")
 {
-    //корректируем путь до файлов-фикстур
-    // $original = getCorrectPath($filePath1);
-    // $new = getCorrectPath($filePath2);
-    //получаем данные
     $originalData = getContent($filePath1);
     $newData = getContent($filePath2);
     $result = bildDiff($originalData, $newData);

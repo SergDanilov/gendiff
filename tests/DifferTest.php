@@ -21,7 +21,8 @@ class DifferTest extends TestCase
      */
     public function testGenDiff($expected, $filePath1, $filePath2, $formatName = "stylish"): void
     {
-        $this->assertStringEqualsFile($expected, genDiff(getFixturePath($filePath1), getFixturePath($filePath2), $formatName));
+        $actual = genDiff(getFixturePath($filePath1), getFixturePath($filePath2), $formatName);
+        $this->assertStringEqualsFile($expected, $actual);
     }
     public function filesProvider()
     {
