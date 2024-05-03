@@ -17,13 +17,13 @@ function getFixturePath($path)
 class DifferTest extends TestCase
 {
     /**
-     * @dataProvider casesProvider
+     * @dataProvider filesProvider
      */
     public function testGenDiff($expected, $filePath1, $filePath2, $formatName = "stylish"): void
     {
-        $this->assertStringEqualsFile($expected, genDiff($filePath1, $filePath2, $formatName));
+        $this->assertStringEqualsFile($expected, genDiff(getFixturePath($filePath1), getFixturePath($filePath2), $formatName));
     }
-    public function provider()
+    public function filesProvider()
     {
         return [
             'simpleJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json"],

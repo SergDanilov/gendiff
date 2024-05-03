@@ -8,23 +8,6 @@ use function Differ\Parsers\convert;
 use function Differ\Formatters\format;
 use function Funct\Collection\union;
 
-function getCorrectPath($path)
-{
-    $parts = [__DIR__, '../tests/fixtures', $path];
-    return realpath(implode('/', $parts));
-}
-//проверяем существование файлов, парсим их, преобразуем в массив php
-function getContent($filePath)
-{
-    if (!file_exists($filePath)) {
-        throw new Exception("File $filePath is not found.");
-    }
-    $pathParts = pathinfo($filePath);
-
-    $fileContent = file_get_contents($filePath);
-    $parsedData = convert($fileContent, $pathParts['extension']);
-    return $parsedData;
-}
 //построение дерева
 function bildDiff($originalData, $newData)
 {
@@ -72,14 +55,31 @@ function bildDiff($originalData, $newData)
     }, $allKeys);
     return $tree;
 }
+function getCorrectPath($path)
+{
+    $parts = [__DIR__, '../tests/fixtures', $path];
+    return realpath(implode('/', $parts));
+}
+//проверяем существование файлов, парсим их, преобразуем в массив php
+function getContent($filePath)
+{
+    if (!file_exists($filePath)) {
+        throw new Exception("File $filePath is not found.");
+    }
+    $pathParts = pathinfo($filePath);
+
+    $fileContent = file_get_contents($filePath);
+    $parsedData = convert($fileContent, $pathParts['extension']);
+    return $parsedData;
+}
 function genDiff($filePath1, $filePath2, $formatName = "stylish")
 {
     //корректируем путь до файлов-фикстур
-    $original = getCorrectPath($filePath1);
-    $new = getCorrectPath($filePath2);
+    // $original = getCorrectPath($filePath1);
+    // $new = getCorrectPath($filePath2);
     //получаем данные
-    $originalData = getContent($original);
-    $newData = getContent($new);
+    $originalData = getContent($filePath1);
+    $newData = getContent($filePath2);
     $result = bildDiff($originalData, $newData);
     return format($result, $formatName);
 }
