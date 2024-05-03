@@ -11,7 +11,7 @@ function format($tree, $formatName)
     switch ($formatName) {
         case "stylish":
             $result = buildStr($tree);
-            return "'{\n{$result}\n}'\n";
+            return "{\n{$result}\n}\n";
         case "plain":
             return  buildPlainText($tree);
         case "json":
