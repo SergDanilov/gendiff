@@ -41,8 +41,6 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
-            'Differ\\Tests\\' => 13,
-            'Differ\\' => 7,
             'DeepCopy\\' => 9,
         ),
     );
@@ -67,14 +65,6 @@ class ComposerStaticInit3889d8725f6edf05af1f291c59f3102e
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
-        ),
-        'Differ\\Tests\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/tests',
-        ),
-        'Differ\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
         ),
         'DeepCopy\\' => 
         array (

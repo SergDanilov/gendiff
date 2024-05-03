@@ -6,9 +6,6 @@
     "description": "A difference calculator is a program that determines the difference between two data structures. A similar mechanism is used when outputting tests or automatically tracking changes in configuration files.",
     "license": "proprietary",
     "autoload": {
-        "psr-4": {
-            "Differ\\": "src/"
-        },
         "files": [
             "src/Differ.php",
             "src/Parsers.php",
@@ -17,11 +14,6 @@
             "src/Formatters/Plain.php",
             "src/Formatters/Json.php"
         ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-          "Differ\\Tests\\": "tests/"
-        }
     },
     "authors": [
         {
