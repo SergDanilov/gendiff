@@ -17,7 +17,7 @@ function getFixturePath($path)
 class DifferTest extends TestCase
 {
     /**
-     * @dataProvider provider
+     * @dataProvider casesProvider
      */
     public function testGenDiff($expected, $filePath1, $filePath2, $formatName = "stylish"): void
     {
