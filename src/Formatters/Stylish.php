@@ -29,7 +29,7 @@ function stringify($value, $depth)
     return "{\n{$result}\n{$closingIndent}}";
 }
 
-function buildStr($diff, $depth = 1)
+function builder($diff, $depth = 1)
 {
     $indent = str_repeat(" ", $depth * 4);
     $indentInner = str_repeat(" ", $depth * 4 - 2);
@@ -43,7 +43,7 @@ function buildStr($diff, $depth = 1)
                 $stringedVal = stringify($item['value'], $depth);
                 return "{$indentInner}- {$key}: {$stringedVal}";
             case "nested":
-                $stringedVal = buildStr($item['children'], $depth + 1);
+                $stringedVal = builder($item['children'], $depth + 1);
                 return "{$indent}{$key}: {\n{$stringedVal}\n{$indent}}";
             case "changed":
                 $stringedOldVal = stringify($item['oldValue'], $depth);
@@ -55,6 +55,11 @@ function buildStr($diff, $depth = 1)
                 throw new \Exception("Unknown item type: {$item['type']}");
         }
     }, $diff);
-    $resStr = implode("\n", $result);
-    return $resStr;
+   
+    return implode("\n", $result);
+}
+function buildStr($diff)
+{
+    $result = builder($diff);
+    return "{\n{$result}\n}";
 }
