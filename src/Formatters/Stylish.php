@@ -55,5 +55,6 @@ function buildStr($diff, $depth = 1)
                 throw new \Exception("Unknown item type: {$item['type']}");
         }
     }, $diff);
-    return implode("\n", $result);
+    $resStr = implode("\n", $result);
+    return $resStr;
 }

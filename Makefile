@@ -2,7 +2,7 @@
 install:
 	composer install
 gendiff:
-	./bin/gendiff file1.json file2.json
+	./bin/gendiff tests/fixtures/file1.json tests/fixtures/file2.json
 validate:
 	composer validate
 autoload:

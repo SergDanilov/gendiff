@@ -10,8 +10,8 @@ function format($tree, $formatName)
 {
     switch ($formatName) {
         case "stylish":
-            $result = buildStr($tree);
-            return "{\n{$result}\n}\n";
+            $result = "{\n" . buildStr($tree) . "\n}\n";
+            return $result;
         case "plain":
             return  buildPlainText($tree);
         case "json":
