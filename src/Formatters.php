@@ -10,7 +10,7 @@ function format($tree, $formatName)
 {
     switch ($formatName) {
         case "stylish":
-            $result = "{\n" . buildStr($tree) . "\n}\n";
+            $result = "'{\n" . buildStr($tree) . "\n}\n";
             return $result;
         case "plain":
             return  buildPlainText($tree);
