@@ -60,5 +60,5 @@ function builder($diff, $depth = 1)
 function buildStr($diff)
 {
     $result = builder($diff);
-    return "{\n$result\n}";
+    return "'" . "{\n$result\n}";
 }
