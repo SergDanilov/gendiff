@@ -57,8 +57,8 @@ function builder($diff, $depth = 1)
     }, $diff);
     return implode("\n", $result);
 }
-function buildStr($diff)
+function buildStr($diff): string
 {
     $result = builder($diff);
-    return "'{\n$result\n}'";
+    return "{\n$result\n}";
 }
