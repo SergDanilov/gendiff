@@ -1,2 +1,3 @@
 vendor/
-.phpunit.result.cashe
+*.cache
+build

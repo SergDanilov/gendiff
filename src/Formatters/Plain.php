@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Plain;
 
-function stringify($value)
+function stringify(mixed $value)
 {
     if (is_bool($value)) {
         return $value ? 'true' : 'false';

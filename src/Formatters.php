@@ -6,7 +6,7 @@ use function Differ\Formatters\Stylish\buildStr;
 use function Differ\Formatters\Plain\buildPlainText;
 use function Differ\Formatters\Json\toJson;
 
-function format($tree, $formatName)
+function format(mixed $tree, string $formatName)
 {
     switch ($formatName) {
         case "stylish":

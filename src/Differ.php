@@ -8,7 +8,7 @@ use function Differ\Parsers\convert;
 use function Differ\Formatters\format;
 
 //построение дерева
-function bildDiff($originalData, $newData)
+function bildDiff(object $originalData, object $newData)
 {
     $old = get_object_vars($originalData);
     $new = get_object_vars($newData);
@@ -55,7 +55,7 @@ function bildDiff($originalData, $newData)
     return $tree;
 }
 //проверяем существование файлов, парсим их, преобразуем в массив
-function getContent($filePath)
+function getContent(string $filePath)
 {
     if (!file_exists($filePath)) {
         throw new Exception("File $filePath is not found.");
@@ -66,7 +66,7 @@ function getContent($filePath)
     $parsedData = convert($fileContent, $pathParts['extension']);
     return $parsedData;
 }
-function genDiff($filePath1, $filePath2, $formatName = "stylish")
+function genDiff(string $filePath1, string $filePath2, string $formatName = "stylish")
 {
     $originalData = getContent($filePath1);
     $newData = getContent($filePath2);
