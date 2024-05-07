@@ -15,6 +15,7 @@ function bildDiff(object $originalData, object $newData)
     $allKeys = array_merge(array_keys($old), array_keys($new));
     $allKeysUnique = array_unique($allKeys);
     sort($allKeysUnique);
+    // print_r($allKeysUnique);
     $tree = array_map(function ($key) use ($old, $new) {
         $oldKeyExist = isset($old[$key]) && is_object($old[$key]);
         $newKeyExist = isset($new[$key]) && is_object($new[$key]);
@@ -56,7 +57,7 @@ function bildDiff(object $originalData, object $newData)
     return $tree;
 }
 //проверяем существование файлов, парсим их, преобразуем в массив
-function getContent(string|false $filePath)
+function getContent(string $filePath)
 {
     if (!file_exists($filePath)) {
         throw new Exception("File $filePath is not found.");
