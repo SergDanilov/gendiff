@@ -12,9 +12,8 @@ function bildDiff(object $originalData, object $newData)
 {
     $old = get_object_vars($originalData);
     $new = get_object_vars($newData);
-    $allKeys = array_merge(array_keys($old), array_keys($new));
-    $allKeysUnique = array_unique($allKeys);
-    sort($allKeysUnique);
+    $allKeys = array_unique(array_merge(array_keys($old), array_keys($new)));
+    sort($allKeys);
     $tree = array_map(function ($key) use ($old, $new) {
         $oldKeyExist = isset($old[$key]) && is_object($old[$key]);
         $newKeyExist = isset($new[$key]) && is_object($new[$key]);
@@ -52,7 +51,7 @@ function bildDiff(object $originalData, object $newData)
             "type" => "unchanged",
             "value" => $new[$key]
         ];
-    }, $allKeysUnique);
+    }, $allKeys);
     return $tree;
 }
 //проверяем существование файлов, парсим их, преобразуем в массив
@@ -66,6 +65,8 @@ function getContent(string $filePath)
     $fileContent = file_get_contents($filePath);
     if (gettype($fileContent) === "string") {
         $parsedData = convert($fileContent, $pathParts["extension"]);
+    } else {
+        throw new Exception("File $filePath is not readable.");
     }
     return $parsedData;
 }
