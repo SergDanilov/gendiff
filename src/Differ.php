@@ -12,8 +12,9 @@ function bildDiff(object $originalData, object $newData)
 {
     $old = get_object_vars($originalData);
     $new = get_object_vars($newData);
-    $allKeys = array_unique(array_merge(array_keys($old), array_keys($new)));
-    sort($allKeys);
+    $allKeys = array_merge(array_keys($old), array_keys($new));
+    $allKeysUnique = array_unique($allKeys);
+    sort($allKeysUnique);
     $tree = array_map(function ($key) use ($old, $new) {
         $oldKeyExist = isset($old[$key]) && is_object($old[$key]);
         $newKeyExist = isset($new[$key]) && is_object($new[$key]);
@@ -51,11 +52,11 @@ function bildDiff(object $originalData, object $newData)
             "type" => "unchanged",
             "value" => $new[$key]
         ];
-    }, $allKeys);
+    }, $allKeysUnique);
     return $tree;
 }
 //проверяем существование файлов, парсим их, преобразуем в массив
-function getContent(string $filePath)
+function getContent(string|false $filePath)
 {
     if (!file_exists($filePath)) {
         throw new Exception("File $filePath is not found.");
@@ -63,7 +64,7 @@ function getContent(string $filePath)
     $pathParts = pathinfo($filePath);
 
     $fileContent = file_get_contents($filePath);
-    $parsedData = convert($fileContent, $pathParts['extension']);
+    $parsedData = convert($fileContent, $pathParts["extension"]);
     return $parsedData;
 }
 function genDiff(string $filePath1, string $filePath2, string $formatName = "stylish")

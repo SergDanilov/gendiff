@@ -22,7 +22,7 @@ function stringify(mixed $value)
     return $result;
 }
 
-function buildPlainText($diff, $ancestor = "")
+function buildPlainText(mixed $diff, string $ancestor = "")
 {
     $result = array_map(function ($item) use ($ancestor) {
         $key = $item['key'];
@@ -45,6 +45,6 @@ function buildPlainText($diff, $ancestor = "")
                 throw new \Exception("Unknown item type: {$item['type']}");
         }
     }, $diff);
-    $result = array_filter($result, fn($str) => !is_null($str));
-    return implode("\n", $result);
+    $resultFilteredNull = array_filter($result, fn($str) => !is_null($str));
+    return implode("\n", $resultFilteredNull);
 }

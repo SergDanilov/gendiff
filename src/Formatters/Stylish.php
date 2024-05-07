@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Stylish;
 
-function stringify($value, int $depth)
+function stringify(mixed $value, int $depth)
 {
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
@@ -29,7 +29,7 @@ function stringify($value, int $depth)
     return "{\n{$result}\n{$closingIndent}}";
 }
 
-function builder($diff, int $depth = 1)
+function builder(mixed $diff, int $depth = 1)
 {
     $indent = str_repeat(" ", $depth * 4);
     $indentInner = str_repeat(" ", $depth * 4 - 2);
@@ -57,7 +57,7 @@ function builder($diff, int $depth = 1)
     }, $diff);
     return implode("\n", $result);
 }
-function buildStr($diff): string
+function buildStr(mixed $diff): string
 {
     $result = builder($diff);
     return "{\n$result\n}";
