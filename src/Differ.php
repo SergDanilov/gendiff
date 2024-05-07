@@ -14,8 +14,7 @@ function bildDiff(object $originalData, object $newData)
     $new = get_object_vars($newData);
     $allKeys = array_merge(array_keys($old), array_keys($new));
     $allKeysUnique = array_unique($allKeys);
-    sort($allKeysUnique);
-    // print_r($allKeysUnique);
+    array_multisort($allKeysUnique);
     $tree = array_map(function ($key) use ($old, $new) {
         $oldKeyExist = isset($old[$key]) && is_object($old[$key]);
         $newKeyExist = isset($new[$key]) && is_object($new[$key]);

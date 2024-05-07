@@ -21,7 +21,8 @@ function stringify(mixed $value, int $depth)
     $closingIndent = str_repeat(" ", $depth * 4);
     $strings = array_map(function ($key) use ($value, $depth) {
         $indent = str_repeat(" ", ($depth + 1) * 4);
-        $stringedVal = stringify($value->$key, $depth + 1);
+        $keyValue = $value->$key;
+        $stringedVal = stringify($keyValue, $depth + 1);
         return "{$indent}{$key}: {$stringedVal}";
     }, array_keys(get_object_vars($value)));
 
