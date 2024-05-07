@@ -6,14 +6,13 @@ use Exception;
 
 use function Differ\Parsers\convert;
 use function Differ\Formatters\format;
-use function Funct\Collection\union;
 
 //построение дерева
 function bildDiff($originalData, $newData)
 {
     $old = get_object_vars($originalData);
     $new = get_object_vars($newData);
-    $allKeys = union(array_keys($old), array_keys($new));
+    $allKeys = array_unique(array_merge(array_keys($old), array_keys($new)));
     sort($allKeys);
     $tree = array_map(function ($key) use ($old, $new) {
         $oldKeyExist = isset($old[$key]) && is_object($old[$key]);
