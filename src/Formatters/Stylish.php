@@ -19,12 +19,14 @@ function stringify(mixed $value, int $depth)
         return $value;
     }
     $closingIndent = str_repeat(" ", $depth * 4);
-    $strings = array_map(function ($key) use ($value, $depth) {
+    $keys = array_keys(get_object_vars($value));
+    $vars = get_object_vars($value);
+    $strings = array_map(function ($key) use ($vars, $depth) {
         $indent = str_repeat(" ", ($depth + 1) * 4);
-        $keyValue = $value->$key;
+        $keyValue = $vars[$key];
         $stringedVal = stringify($keyValue, $depth + 1);
         return "{$indent}{$key}: {$stringedVal}";
-    }, array_keys(get_object_vars($value)));
+    }, $keys);
 
     $result = implode("\n", $strings);
     return "{\n{$result}\n{$closingIndent}}";
@@ -58,7 +60,7 @@ function builder(mixed $diff, int $depth = 1)
     }, $diff);
     return implode("\n", $result);
 }
-function buildStr(mixed $diff): string
+function stylish(mixed $diff): string
 {
     $result = builder($diff);
     return "{\n$result\n}";

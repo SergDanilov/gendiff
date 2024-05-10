@@ -2,7 +2,7 @@
 
 namespace Differ\Formatters\Json;
 
-function toJson(mixed $value)
+function json(mixed $value)
 {
     return json_encode($value);
 }

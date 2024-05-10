@@ -22,7 +22,7 @@ function stringify(mixed $value)
     return $result;
 }
 
-function buildPlainText(mixed $diff, string $ancestor = "")
+function plain(mixed $diff, string $ancestor = "")
 {
     $result = array_map(function ($item) use ($ancestor) {
         $key = $item['key'];
@@ -34,7 +34,7 @@ function buildPlainText(mixed $diff, string $ancestor = "")
             case "deleted":
                 return "Property '{$property}' was removed";
             case "nested":
-                return buildPlainText($item['children'], $property);
+                return plain($item['children'], $property);
             case "changed":
                 $stringedOldVal = stringify($item['oldValue']);
                 $stringedVal = stringify($item['value']);
