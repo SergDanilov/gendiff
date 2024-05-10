@@ -6,6 +6,7 @@ use Exception;
 
 use function Differ\Parsers\convert;
 use function Differ\Formatters\format;
+use function Functional\sort;
 
 //построение дерева
 function bildDiff(object $originalData, object $newData)
@@ -13,7 +14,7 @@ function bildDiff(object $originalData, object $newData)
     $old = get_object_vars($originalData);
     $new = get_object_vars($newData);
     $allKeys = array_unique(array_merge(array_keys($old), array_keys($new)));
-    sort($allKeys);
+    $keysSorted = sort($allKeys, fn ($left, $right) => strcmp($left, $right));
     $tree = array_map(function ($key) use ($old, $new) {
         $oldKeyExist = isset($old[$key]) && is_object($old[$key]);
         $newKeyExist = isset($new[$key]) && is_object($new[$key]);
@@ -51,20 +52,19 @@ function bildDiff(object $originalData, object $newData)
             "type" => "unchanged",
             "value" => $new[$key]
         ];
-    }, $allKeys);
+    }, $keysSorted);
     return $tree;
 }
-//проверяем существование файлов, парсим их, преобразуем в массив
 function getContent(string $filePath)
 {
     if (!file_exists($filePath)) {
         throw new Exception("File $filePath is not found.");
     }
-    $pathParts = pathinfo($filePath);
-
     $fileContent = file_get_contents($filePath);
-    if (gettype($fileContent) === "string") {
-        $parsedData = convert($fileContent, $pathParts["extension"]);
+    $pathParts = pathinfo($filePath, PATHINFO_EXTENSION);
+    
+    if (gettype($fileContent) === "string" && $pathParts) {
+        $parsedData = convert($fileContent, $pathParts);
     } else {
         throw new Exception("File $filePath is not readable.");
     }
