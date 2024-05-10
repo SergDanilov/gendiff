@@ -61,10 +61,10 @@ function getContent(string $filePath)
         throw new Exception("File $filePath is not found.");
     }
     $fileContent = file_get_contents($filePath);
-    $pathParts = pathinfo($filePath, PATHINFO_EXTENSION);
+    $extension = pathinfo($filePath, PATHINFO_EXTENSION);
 
-    if (gettype($fileContent) === "string" && isset($pathParts)) {
-        $parsedData = convert($fileContent, $pathParts);
+    if (gettype($fileContent) === "string") {
+        $parsedData = convert($fileContent, $extension);
     } else {
         throw new Exception("File $filePath is not readable.");
     }
