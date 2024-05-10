@@ -62,7 +62,7 @@ function getContent(string $filePath)
     }
     $fileContent = file_get_contents($filePath);
     $pathParts = pathinfo($filePath, PATHINFO_EXTENSION);
-    
+
     if (gettype($fileContent) === "string" && $pathParts) {
         $parsedData = convert($fileContent, $pathParts);
     } else {
