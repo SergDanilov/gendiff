@@ -63,7 +63,7 @@ function getContent(string $filePath)
     $fileContent = file_get_contents($filePath);
     $pathParts = pathinfo($filePath, PATHINFO_EXTENSION);
 
-    if (gettype($fileContent) === "string" && $pathParts) {
+    if (gettype($fileContent) === "string" && isset($pathParts)) {
         $parsedData = convert($fileContent, $pathParts);
     } else {
         throw new Exception("File $filePath is not readable.");
