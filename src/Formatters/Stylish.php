@@ -7,6 +7,7 @@ function stringify(mixed $value, int $depth)
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
     }
+
     if (is_null($value)) {
         return 'null';
     }
@@ -18,6 +19,7 @@ function stringify(mixed $value, int $depth)
     if (is_string($value)) {
         return $value;
     }
+
     $closingIndent = str_repeat(" ", $depth * 4);
     $keys = array_keys(get_object_vars($value));
     $vars = get_object_vars($value);
@@ -60,7 +62,8 @@ function builder(mixed $diff, int $depth = 1)
     }, $diff);
     return implode("\n", $result);
 }
-function stylish(mixed $diff): string
+
+function render(mixed $diff): string
 {
     $result = builder($diff);
     return "{\n$result\n}";

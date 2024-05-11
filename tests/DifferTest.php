@@ -6,14 +6,12 @@ use PHPUnit\Framework\TestCase;
 
 use function Differ\Differ\genDiff;
 
-// функция для формирования путей до тестируемых файлов
 function getFixturePath($path)
 {
     $parts = [__DIR__, 'fixtures', $path];
     return implode('/', $parts);
 }
-// класс DifferTest наследует класс TestCase
-// имя класса совпадает с именем файла
+
 class DifferTest extends TestCase
 {
     /**
@@ -21,20 +19,46 @@ class DifferTest extends TestCase
      */
     public function testGenDiff($expected, $filePath1, $filePath2, $formatName = "stylish"): void
     {
-        $actual = genDiff(getFixturePath($filePath1), getFixturePath($filePath2), $formatName);
+        $actual = genDiff($filePath1, $filePath2, $formatName);
         $this->assertStringEqualsFile($expected, $actual);
     }
+
     public function filesProvider()
     {
         return [
-            'simpleJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json"],
-            'defaultJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json"],
-            'stylishJsonToJson' => [getFixturePath("stylish.txt"), "file1.json", "file2.json", "stylish"],
-            'stylishYmlToYml' => [getFixturePath("stylish.txt"), "file1.yml", "file2.yml", "stylish"],
-            'plainJsonToJson' => [getFixturePath("plain.txt"), "file1.json", "file2.json", "plain"],
-            'plainYmlToYml' => [getFixturePath("plain.txt"), "file1.yml", "file2.yml", "plain"],
-            'jsonJsonToJson' => [getFixturePath("json.txt"), "file1.json", "file2.json", "json"],
-            'jsonYmlToYml' => [getFixturePath("json.txt"), "file1.yml", "file2.yml", "json"],
+            'simpleJsonToJson' => [ getFixturePath("stylish.txt"),
+                                    getFixturePath("file1.json"),
+                                    getFixturePath("file2.json")],
+            'defaultJsonToJson' => [getFixturePath("stylish.txt"),
+                                    getFixturePath("file1.json"),
+                                    getFixturePath("file2.json")],
+            'stylishJsonToJson' => [getFixturePath("stylish.txt"),
+                                    getFixturePath("file1.json"),
+                                    getFixturePath("file2.json"), "stylish"],
+            'stylishYmlToYml'   => [getFixturePath("stylish.txt"),
+                                    getFixturePath("file1.yml"),
+                                    getFixturePath("file2.yml"), "stylish"],
+            'stylishMixed'      =>  [getFixturePath("stylish.txt"),
+                                    getFixturePath("file1.json"),
+                                    getFixturePath("file2.yml"), "stylish"],
+            'plainJsonToJson'   => [getFixturePath("plain.txt"),
+                                    getFixturePath("file1.json"),
+                                    getFixturePath("file2.json"), "plain"],
+            'plainYmlToYml'     => [getFixturePath("plain.txt"),
+                                    getFixturePath("file1.yml"),
+                                    getFixturePath("file2.yml"), "plain"],
+            'plainMixed'        =>  [getFixturePath("plain.txt"),
+                                    getFixturePath("file1.json"),
+                                    getFixturePath("file2.yml"), "plain"],
+            'jsonJsonToJson'    => [getFixturePath("json.txt"),
+                                    getFixturePath("file1.json"),
+                                    getFixturePath("file2.json"), "json"],
+            'jsonYmlToYml'      => [getFixturePath("json.txt"),
+                                    getFixturePath("file1.yml"),
+                                    getFixturePath("file2.yml"), "json"],
+            'jsonMixed'         => [getFixturePath("json.txt"),
+                                    getFixturePath("file1.json"),
+                                    getFixturePath("file2.yml"), "json"],
         ];
     }
 }

@@ -2,19 +2,17 @@
 
 namespace Differ\Formatters;
 
-use function Differ\Formatters\Plain\plain;
-use function Differ\Formatters\Json\json;
-use function Differ\Formatters\Stylish\stylish;
+use Differ\Formatters;
 
 function format(mixed $tree, string $formatName)
 {
     switch ($formatName) {
         case "stylish":
-            return stylish($tree);
+            return Stylish\render($tree);
         case "plain":
-            return  plain($tree);
+            return  Plain\render($tree);
         case "json":
-            return  json($tree);
+            return  Json\render($tree);
         default:
             throw new \Exception("Unknown format type: {$formatName}");
     }

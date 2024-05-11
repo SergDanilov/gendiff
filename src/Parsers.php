@@ -10,7 +10,6 @@ function convert(string $currentData, string $format)
         case "json":
             return json_decode($currentData);
         case "yml":
-            return Yaml::parse($currentData, Yaml::PARSE_OBJECT_FOR_MAP);
         case "yaml":
             return Yaml::parse($currentData, Yaml::PARSE_OBJECT_FOR_MAP);
         default:

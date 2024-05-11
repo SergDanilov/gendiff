@@ -7,6 +7,7 @@ function stringify(mixed $value)
     if (is_bool($value)) {
         return $value ? 'true' : 'false';
     }
+
     if (is_null($value)) {
         return 'null';
     }
@@ -18,11 +19,12 @@ function stringify(mixed $value)
     if (is_string($value)) {
         return "'{$value}'";
     }
+
     $result = "[complex value]";
     return $result;
 }
 
-function plain(mixed $diff, string $ancestor = "")
+function render(mixed $diff, string $ancestor = "")
 {
     $result = array_map(function ($item) use ($ancestor) {
         $key = $item['key'];
@@ -34,7 +36,7 @@ function plain(mixed $diff, string $ancestor = "")
             case "deleted":
                 return "Property '{$property}' was removed";
             case "nested":
-                return plain($item['children'], $property);
+                return render($item['children'], $property);
             case "changed":
                 $stringedOldVal = stringify($item['oldValue']);
                 $stringedVal = stringify($item['value']);
